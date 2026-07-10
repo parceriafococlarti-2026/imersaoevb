@@ -20,16 +20,17 @@
     />
     <meta
       property="og:description"
-      content="Você domina sua profissão. Agora é hora de dominar o seu negócio."
+      content="Você domina sua profissão. A EVB te faz dominar o mercado."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
     <meta
       property="og:image"
-      content="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85"
+      content="imgs/fotoDoLocal.jpg"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <title>EVB — Imersão Venda Estruturada Beauty</title>
+    <link rel="icon" type="image/jpeg" href="imgs/logoComFundo.jpeg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -474,10 +475,9 @@
             rgba(5, 5, 5, 0.34) 100%
           ),
           linear-gradient(180deg, rgba(5, 5, 5, 0.22), rgba(5, 5, 5, 0.98) 98%),
-          url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=88")
+          url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=76")
             center 38% / cover no-repeat;
         transform: scale(1.04);
-        animation: heroZoom 14s ease-in-out infinite alternate;
       }
 
       .hero::after {
@@ -489,15 +489,6 @@
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
         opacity: 0.06;
         mix-blend-mode: screen;
-      }
-
-      @keyframes heroZoom {
-        from {
-          transform: scale(1.04);
-        }
-        to {
-          transform: scale(1.1);
-        }
       }
 
       .hero__content {
@@ -1043,7 +1034,7 @@
             rgba(5, 5, 5, 0.78),
             rgba(5, 5, 5, 0.7)
           ),
-          url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=88")
+          url("imgs/fotoComParticipantes.jpg")
             center / cover no-repeat;
         background-attachment: scroll;
       }
@@ -1454,6 +1445,17 @@
         box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.08);
       }
 
+      select.form-control {
+        color-scheme: dark;
+        color: var(--cream);
+        background-color: var(--black-2);
+      }
+
+      select.form-control option {
+        color: var(--cream);
+        background-color: var(--black-2);
+      }
+
       .form-note {
         margin: 2px 0 0;
         color: rgba(245, 242, 234, 0.45);
@@ -1648,8 +1650,10 @@
       }
 
       .floating-whatsapp .icon {
-        width: 27px;
-        height: 27px;
+        width: 29px;
+        height: 29px;
+        fill: currentColor;
+        stroke: none;
       }
 
       .lightbox {
@@ -1700,11 +1704,8 @@
       }
 
       .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-        transition:
-          opacity 0.72s ease-out,
-          transform 0.72s ease-out;
+        opacity: 1;
+        transform: none;
       }
 
       .reveal.is-visible {
@@ -1720,6 +1721,22 @@
       }
       .reveal-delay-3 {
         transition-delay: 0.24s;
+      }
+
+      /* Evita renderizar antecipadamente o conteúdo que ainda está fora da tela. */
+      main > section:not(.hero) {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 800px;
+      }
+
+      .site-header,
+      .nav,
+      .hero__trust,
+      .exclusive-panel,
+      .lightbox,
+      .floating-whatsapp {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
       }
 
       @media (min-width: 620px) {
@@ -2033,7 +2050,7 @@
             </p>
             <h1 id="hero-title" class="reveal reveal-delay-1">
               Você domina sua profissão.
-              <strong>Domine o seu negócio.</strong>
+              <strong>A EVB te faz dominar o mercado.</strong>
             </h1>
             <p class="hero__description reveal reveal-delay-2">
               Uma experiência exclusiva, realizada uma vez por mês, para
@@ -2079,7 +2096,7 @@
             <span class="eyebrow reveal">Sobre a experiência</span>
             <h2 class="section-title reveal">O que é a <em>EVB</em></h2>
             <p class="reveal">
-              A EVB transforma profissionais da beleza em empresários preparados
+              A EVB transforma profissionais da beleza em empresárias preparadas
               para crescer. Aqui você não aprende só técnica — aprende a
               estruturar gestão, vendas, posicionamento, marketing, comunicação,
               liderança, financeiro e mentalidade empresarial.
@@ -2102,7 +2119,9 @@
             </div>
           </div>
 
-          <figure class="image-frame reveal"></figure>
+          <figure class="image-frame reveal">
+            <img src="imgs/imgDoLocal.jpg" alt="Imagem do Local do Evento">
+          </figure>
         </div>
       </section>
 
@@ -2125,7 +2144,7 @@
               </div>
               <h3>Missão</h3>
               <p>
-                Transformar profissionais da beleza em empresários preparados
+                Transformar profissionais da beleza em empresárias preparadas
                 para crescer.
               </p>
             </article>
@@ -2247,7 +2266,7 @@
               <div class="mentor-card__image">
                 <!-- Troque esta imagem pela foto oficial de Paulo Carvalho. -->
                 <img
-                  src="imgs/fotoDoPaulo.PNG"
+                  src="imgs/fotoDoPaulo2.PNG"
                   alt="Mentor em reunião estratégica com profissionais"
                   width="1000"
                   height="800"
@@ -2264,20 +2283,12 @@
                 >
                 <p>
                   Fundador da EVB, especialista em transformar profissionais da
-                  beleza em empresários através de gestão, vendas e
+                  beleza em empresárias através de gestão, vendas e
                   posicionamento estratégico.
                 </p>
               </div>
             </article>
 
-            <p class="mentor-note reveal">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 3v18M3 12h18" />
-              </svg>
-              Novos mentores convidados participam mensalmente das próximas
-              edições. A estrutura já está preparada para receber novos
-              especialistas.
-            </p>
           </div>
         </div>
       </section>
@@ -2331,26 +2342,19 @@
             <article class="flow-step reveal">
               <span class="flow-step__number">04</span>
               <div>
-                <h3>Coffee Break</h3>
-                <p>Pausa com troca de experiências.</p>
-              </div>
-            </article>
-            <article class="flow-step reveal">
-              <span class="flow-step__number">05</span>
-              <div>
                 <h3>Mentorias</h3>
                 <p>Direcionamento para o negócio.</p>
               </div>
             </article>
             <article class="flow-step reveal">
-              <span class="flow-step__number">06</span>
+              <span class="flow-step__number">05</span>
               <div>
                 <h3>Plano de ação</h3>
                 <p>Próximos passos definidos.</p>
               </div>
             </article>
             <article class="flow-step reveal">
-              <span class="flow-step__number">07</span>
+              <span class="flow-step__number">06</span>
               <div>
                 <h3>Encerramento</h3>
                 <p>Decisão e compromisso.</p>
@@ -2815,10 +2819,7 @@
     >
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
         <path
-          d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.4-4.7A8.5 8.5 0 1 1 20.5 11.6Z"
-        />
-        <path
-          d="M8.4 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.8 1.8c.1.3.1.5-.1.7l-.6.8c-.2.2-.2.4 0 .7.7 1.2 1.7 2.1 2.9 2.7.3.2.5.1.7-.1l.8-1c.2-.3.4-.3.7-.2l1.8.8c.3.1.5.3.5.6 0 .4-.2 1.4-1 2-.7.6-1.5.9-2.5.6-1-.3-4.2-1.6-6.3-5.3-.6-1.1-.8-2-.7-2.7.1-.6.7-1.2 1.3-1.4Z"
+          d="M12.04 2a9.84 9.84 0 0 0-8.43 14.91L2.05 22l5.22-1.52A9.94 9.94 0 1 0 12.04 2Zm0 17.99a8 8 0 0 1-4.08-1.12l-.29-.17-3.1.9.93-3.02-.19-.31a7.99 7.99 0 1 1 6.73 3.72Zm4.38-5.98c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19a7.2 7.2 0 0 1-1.33-1.66c-.14-.24-.01-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.47-.39-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.39 1.37.5.58.18 1.1.16 1.51.1.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z"
         />
       </svg>
     </a>
@@ -2864,13 +2865,13 @@
         termsUrl: "#",
 
         event: {
-          dateISO: "", // Ex.: "2026-08-22T09:00:00-03:00". Vazio = "Em breve"
-          dateLabel: "Em breve",
-          time: "A confirmar",
-          city: "A confirmar",
+          dateISO: "2026-07-26T09:00:00-03:00", // Ex.: "2026-08-22T09:00:00-03:00". Vazio = "Em breve"
+          dateLabel: "26 de julho de 2026",
+          time: "das 9h às 16h",
+          city: "Cabo Frio - RJ",
           location: "A confirmar",
           spots: "Limitadas",
-          price: "Consulte",
+          price: "R$ 597,00",
           status: "Informações em atualização",
         },
       };
@@ -2945,7 +2946,7 @@
         {
           question: "O que está incluso na inscrição?",
           answer:
-            "O conteúdo, as mentorias e a programação descrita na página. Itens adicionais, como material, coffee break e certificado, devem ser confirmados em cada edição.",
+            "O conteúdo, as mentorias e a programação descrita na página. Itens adicionais, como materiais e certificado, devem ser confirmados em cada edição.",
         },
         {
           question: "Posso transferir minha vaga?",
@@ -3181,28 +3182,6 @@
         });
       }
 
-      function setupReveal() {
-        const elements = $$(".reveal");
-        if (!("IntersectionObserver" in window)) {
-          elements.forEach((el) => el.classList.add("is-visible"));
-          return;
-        }
-
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.12, rootMargin: "0px 0px -35px" },
-        );
-
-        elements.forEach((el) => observer.observe(el));
-      }
-
       function setupScrollSpy() {
         const links = $$(".nav__link");
         const sections = links
@@ -3284,7 +3263,6 @@
 
       function setupCarousel() {
         let index = 0;
-        let autoPlay;
 
         const update = () => {
           $("#testimonial-track").style.transform =
@@ -3302,30 +3280,18 @@
           update();
         };
 
-        const startAutoPlay = () => {
-          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-            return;
-          clearInterval(autoPlay);
-          autoPlay = setInterval(() => go(index + 1), 6500);
-        };
-
         $("#testimonial-prev").addEventListener("click", () => {
           go(index - 1);
-          startAutoPlay();
         });
         $("#testimonial-next").addEventListener("click", () => {
           go(index + 1);
-          startAutoPlay();
         });
 
         $$(".carousel-dot").forEach((dot) => {
           dot.addEventListener("click", () => {
             go(Number(dot.dataset.index));
-            startAutoPlay();
           });
         });
-
-        startAutoPlay();
       }
 
       function setupCountdown() {
@@ -3462,7 +3428,6 @@
         setupCarousel();
         setupCountdown();
         setupForm();
-        setupReveal();
         setupScrollSpy();
         $("#current-year").textContent = new Date().getFullYear();
       });

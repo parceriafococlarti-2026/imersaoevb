@@ -3,16 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#080808" />
+    <meta name="msapplication-navbutton-color" content="#080808" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="color-scheme" content="dark" />
     <meta
       name="description"
-      content="EVB — Imersão Venda Estruturada Beauty. Uma experiência presencial para profissionais da beleza que querem estruturar, vender e crescer."
+      content="EVB em Cabo Frio, RJ — imersão presencial para profissionais da beleza que querem estruturar a gestão, vender mais e construir um negócio lucrativo."
     />
     <meta
       name="keywords"
-      content="EVB, imersão beauty, gestão para beleza, vendas para salão, empreendedorismo na beleza"
+      content="EVB Cabo Frio, imersão em Cabo Frio RJ, evento para profissionais da beleza, gestão para beleza, vendas para salão, empreendedorismo na beleza"
     />
+    <meta name="geo.region" content="BR-RJ" />
+    <meta name="geo.placename" content="Cabo Frio" />
     <meta name="author" content="EVB — Venda Estruturada Beauty" />
     <meta
       property="og:title"
@@ -20,7 +24,7 @@
     />
     <meta
       property="og:description"
-      content="Você domina sua profissão. A EVB te faz dominar o mercado."
+      content="Imersão presencial em Cabo Frio, RJ, para profissionais da beleza que querem estruturar, vender mais e crescer."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
@@ -70,6 +74,26 @@
         scroll-behavior: smooth;
         scroll-padding-top: 92px;
         background: var(--black);
+        scrollbar-color: var(--gold-dark) var(--black-2);
+        scrollbar-width: thin;
+      }
+
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--black-2);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        border: 3px solid var(--black-2);
+        border-radius: 999px;
+        background: linear-gradient(180deg, var(--gold-light), var(--gold-dark));
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #f6e49a, var(--gold));
       }
 
       body {
@@ -333,7 +357,6 @@
         border-bottom-color: rgba(212, 175, 55, 0.13);
         background: rgba(8, 8, 8, 0.91);
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
-        backdrop-filter: blur(18px);
       }
 
       .nav {
@@ -374,6 +397,7 @@
       .nav__links {
         position: fixed;
         inset: 0;
+        z-index: 1000;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -972,7 +996,7 @@
         position: absolute;
         top: 26px;
         bottom: 26px;
-        left: 26px;
+        left: 38px;
         width: 1px;
         content: "";
         background: rgba(212, 175, 55, 0.26);
@@ -1027,15 +1051,7 @@
 
       .exclusive {
         overflow: hidden;
-        background:
-          linear-gradient(
-            90deg,
-            rgba(5, 5, 5, 0.98),
-            rgba(5, 5, 5, 0.78),
-            rgba(5, 5, 5, 0.7)
-          ),
-          url("imgs/fotoComParticipantes.jpg")
-            center / cover no-repeat;
+        background: var(--black-2);
         background-attachment: scroll;
       }
 
@@ -1099,7 +1115,9 @@
 
       .gallery-item {
         position: relative;
+        display: block;
         overflow: hidden;
+        padding: 0;
         border: 0;
         border-radius: 14px;
         color: var(--cream);
@@ -1109,21 +1127,22 @@
 
       .gallery-item:first-child {
         grid-column: 1 / -1;
-        grid-row: span 2;
       }
-      .gallery-item:nth-child(4) {
-        grid-column: 1 / -1;
+
+      .gallery-item:nth-child(2) img {
+        object-position: center top;
       }
 
       .gallery-item::after {
         position: absolute;
         inset: 0;
         content: "";
-        background: linear-gradient(transparent 42%, rgba(5, 5, 5, 0.86));
+        background: transparent;
         transition: var(--transition);
       }
 
-      .gallery-item img {
+      .gallery-item img,
+      .gallery-item video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -1133,13 +1152,64 @@
           filter 0.3s ease-in-out;
       }
 
-      .gallery-item:hover img {
+      .gallery-item:hover img,
+      .gallery-item:hover video {
         transform: scale(1.07);
         filter: saturate(1) sepia(0.05);
       }
 
+      .gallery-item__play {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        display: grid;
+        place-items: center;
+        width: 58px;
+        height: 58px;
+        border: 1px solid rgba(239, 215, 118, 0.65);
+        border-radius: 50%;
+        color: var(--black);
+        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+        transform: translate(-50%, -50%);
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover .gallery-item__play {
+        transform: translate(-50%, -50%) scale(1.08);
+      }
+
+      .gallery-item__play .icon {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+        stroke: none;
+      }
+
       .gallery-item:hover::after {
-        background: linear-gradient(transparent 30%, rgba(5, 5, 5, 0.78));
+        background: rgba(212, 175, 55, 0.06);
+      }
+
+      .feedback-videos {
+        display: grid;
+        gap: 18px;
+        margin-top: 38px;
+      }
+
+      .feedback-video {
+        overflow: hidden;
+        border: 1px solid rgba(212, 175, 55, 0.18);
+        border-radius: var(--radius);
+        background: var(--black-3);
+        box-shadow: var(--shadow);
+      }
+
+      .feedback-video video {
+        display: block;
+        width: 100%;
+        max-height: 680px;
+        background: #000;
       }
 
       .gallery-item__label {
@@ -1541,8 +1611,7 @@
             transparent 44%
           ),
           linear-gradient(rgba(8, 8, 8, 0.78), rgba(8, 8, 8, 0.94)),
-          url("https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1800&q=88")
-            center / cover no-repeat;
+          url("imgs/bastidores/bastidores3.png") center / cover no-repeat;
       }
 
       .final-cta .section-title {
@@ -1681,11 +1750,18 @@
         max-height: 88vh;
       }
 
-      .lightbox img {
+      .lightbox img,
+      .lightbox video {
         width: 100%;
         max-height: 84vh;
         object-fit: contain;
         border-radius: var(--radius-sm);
+        background: #000;
+      }
+
+      .lightbox video[hidden],
+      .lightbox img[hidden] {
+        display: none;
       }
 
       .lightbox__close {
@@ -1721,6 +1797,19 @@
       }
       .reveal-delay-3 {
         transition-delay: 0.24s;
+      }
+
+      @media (min-width: 768px) {
+        .exclusive {
+          background:
+            linear-gradient(
+              90deg,
+              rgba(5, 5, 5, 0.98),
+              rgba(5, 5, 5, 0.78),
+              rgba(5, 5, 5, 0.7)
+            ),
+            url("imgs/fotoComParticipantes.jpg") center / cover no-repeat;
+        }
       }
 
       /* Evita renderizar antecipadamente o conteúdo que ainda está fora da tela. */
@@ -1927,13 +2016,10 @@
 
         .gallery-item:first-child {
           grid-column: span 2;
-          grid-row: span 2;
         }
-        .gallery-item:nth-child(4) {
-          grid-column: span 2;
-        }
-        .gallery-item:nth-child(5) {
-          grid-column: span 2;
+
+        .feedback-videos {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .testimonial__card {
@@ -2289,6 +2375,33 @@
               </div>
             </article>
 
+            <article class="mentor-card reveal">
+              <div class="mentor-card__image">
+                <img
+                  src="imgs/fotoDoRaphael.jpeg"
+                  alt="Retrato profissional de Raphael Pimentel Massini"
+                  width="1000"
+                  height="800"
+                  loading="lazy"
+                />
+              </div>
+              <div class="mentor-card__body">
+                <span class="eyebrow" style="margin-bottom: 5px"
+                  >Mentor convidado</span
+                >
+                <h3>Raphael Pimentel Massini</h3>
+                <span class="mentor-card__role"
+                  >Gestão e estratégia financeira para negócios da beleza</span
+                >
+                <p>
+                  Consultor e estrategista financeiro, Raphael ajuda
+                  profissionais da beleza a organizarem seus números, definirem
+                  preços e custos com clareza e transformarem faturamento em
+                  lucro, construindo negócios mais sólidos e previsíveis.
+                </p>
+              </div>
+            </article>
+
           </div>
         </div>
       </section>
@@ -2404,106 +2517,96 @@
           <span class="eyebrow reveal">Experiência em movimento</span>
           <h2 class="section-title reveal">Bastidores da <em>EVB</em></h2>
           <p class="lead reveal">
-            Substitua estas imagens pelas fotos e vídeos reais de cada edição.
+            Alguns registros de quem já viveu essa experiência.
           </p>
 
           <div class="gallery-grid">
             <button
               class="gallery-item reveal"
-              data-full="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1800&q=90"
-              aria-label="Ampliar imagem: apresentação para profissionais"
+              data-full="imgs/bastidores/bastidores1.png"
+              aria-label="Ampliar foto dos bastidores da EVB"
             >
               <img
-                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1000&q=82"
-                alt="Apresentação em um encontro empresarial"
+                src="imgs/bastidores/bastidores1.png"
+                alt="Bastidores da imersão EVB"
                 width="1000"
                 height="900"
                 loading="lazy"
               />
-              <span class="gallery-item__label">
-                Conteúdo ao vivo
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M15 3h6v6M14 10l7-7M9 21H3v-6M10 14l-7 7" />
-                </svg>
-              </span>
             </button>
 
             <button
               class="gallery-item reveal"
-              data-full="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1800&q=90"
-              aria-label="Ampliar imagem: networking"
+              data-full="imgs/bastidores/bastidores2.png"
+              aria-label="Ampliar foto dos bastidores da EVB"
             >
               <img
-                src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=82"
-                alt="Profissionais em networking"
+                src="imgs/bastidores/bastidores2.png"
+                alt="Participantes durante a imersão EVB"
                 width="800"
                 height="600"
                 loading="lazy"
               />
-              <span class="gallery-item__label">
-                Networking
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M15 3h6v6M14 10l7-7M9 21H3v-6M10 14l-7 7" />
-                </svg>
-              </span>
             </button>
 
             <button
               class="gallery-item reveal"
-              data-full="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=90"
-              aria-label="Ampliar imagem: troca de experiências"
+              data-full="imgs/bastidores/bastidores3.png"
+              aria-label="Ampliar foto dos bastidores da EVB"
             >
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=82"
-                alt="Equipe reunida trocando experiências"
+                src="imgs/bastidores/bastidores3.png"
+                alt="Registro de uma edição da imersão EVB"
                 width="800"
                 height="600"
                 loading="lazy"
               />
-              <span class="gallery-item__label">
-                Trocas reais
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M15 3h6v6M14 10l7-7M9 21H3v-6M10 14l-7 7" />
+            </button>
+
+            <button
+              class="gallery-item reveal"
+              data-full="videos/bastidores/bastidores4.mp4"
+              data-type="video"
+              aria-label="Reproduzir vídeo dos bastidores da EVB"
+            >
+              <video muted preload="metadata" playsinline aria-hidden="true">
+                <source src="videos/bastidores/bastidores4.mp4" type="video/mp4" />
+              </video>
+              <span class="gallery-item__play" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="m8 5 11 7-11 7V5Z" />
                 </svg>
               </span>
             </button>
 
             <button
               class="gallery-item reveal"
-              data-full="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1800&q=90"
-              aria-label="Ampliar imagem: mercado da beleza"
+              data-full="videos/bastidores/bastidores5.mp4"
+              data-type="video"
+              aria-label="Reproduzir vídeo dos bastidores da EVB"
             >
-              <img
-                src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=82"
-                alt="Ambiente profissional do mercado da beleza"
-                width="1000"
-                height="650"
-                loading="lazy"
-              />
-              <span class="gallery-item__label">
-                Mercado Beauty
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M15 3h6v6M14 10l7-7M9 21H3v-6M10 14l-7 7" />
+              <video muted preload="metadata" playsinline aria-hidden="true">
+                <source src="videos/bastidores/bastidores5.mp4" type="video/mp4" />
+              </video>
+              <span class="gallery-item__play" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="m8 5 11 7-11 7V5Z" />
                 </svg>
               </span>
             </button>
 
             <button
               class="gallery-item reveal"
-              data-full="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1800&q=90"
-              aria-label="Ampliar imagem: mentoria"
+              data-full="videos/bastidores/espaco1.mp4"
+              data-type="video"
+              aria-label="Reproduzir vídeo do espaço da EVB"
             >
-              <img
-                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=82"
-                alt="Mentoria e planejamento de negócios"
-                width="1000"
-                height="650"
-                loading="lazy"
-              />
-              <span class="gallery-item__label">
-                Mentoria
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M15 3h6v6M14 10l7-7M9 21H3v-6M10 14l-7 7" />
+              <video muted preload="metadata" playsinline aria-hidden="true">
+                <source src="videos/bastidores/espaco1.mp4" type="video/mp4" />
+              </video>
+              <span class="gallery-item__play" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="m8 5 11 7-11 7V5Z" />
                 </svg>
               </span>
             </button>
@@ -2516,44 +2619,21 @@
           <span class="eyebrow reveal">Transformação percebida</span>
           <h2 class="section-title reveal">Quem já viveu a <em>EVB</em></h2>
           <p class="lead reveal">
-            Os textos abaixo são placeholders. Substitua por depoimentos reais
-            para aumentar a credibilidade da página.
+            Veja o que participantes têm a dizer sobre a experiência.
           </p>
 
-          <div
-            class="testimonials-shell reveal"
-            aria-roledescription="carrossel"
-            aria-label="Depoimentos"
-          >
-            <div class="testimonials-track" id="testimonial-track"></div>
-            <div class="carousel-controls">
-              <div
-                class="carousel-dots"
-                id="carousel-dots"
-                aria-label="Selecionar depoimento"
-              ></div>
-              <div class="carousel-arrows">
-                <button
-                  class="round-button"
-                  id="testimonial-prev"
-                  type="button"
-                  aria-label="Depoimento anterior"
-                >
-                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="m15 18-6-6 6-6" />
-                  </svg>
-                </button>
-                <button
-                  class="round-button"
-                  id="testimonial-next"
-                  type="button"
-                  aria-label="Próximo depoimento"
-                >
-                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="m9 18 6-6-6-6" />
-                  </svg>
-                </button>
-              </div>
+          <div class="feedback-videos">
+            <div class="feedback-video reveal">
+              <video controls preload="metadata" playsinline>
+                <source src="videos/feedbacks/feedback1.mp4" type="video/mp4" />
+                Seu navegador não suporta a reprodução deste vídeo.
+              </video>
+            </div>
+            <div class="feedback-video reveal reveal-delay-1">
+              <video controls preload="metadata" playsinline>
+                <source src="videos/feedbacks/feedback2.mp4" type="video/mp4" />
+                Seu navegador não suporta a reprodução deste vídeo.
+              </video>
             </div>
           </div>
         </div>
@@ -2788,9 +2868,6 @@
                 >Instagram</a
               >
               <a class="js-whatsapp" href="#edicao">WhatsApp</a>
-              <a id="email-link" href="mailto:contato@evbimersao.com.br"
-                >contato@evbimersao.com.br</a
-              >
               <a id="privacy-link" href="#">Política de Privacidade</a>
               <a id="terms-link" href="#">Termos de Uso</a>
             </div>
@@ -2836,13 +2913,14 @@
           class="lightbox__close"
           id="lightbox-close"
           type="button"
-          aria-label="Fechar imagem"
+          aria-label="Fechar mídia"
         >
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="m6 6 12 12M18 6 6 18" />
           </svg>
         </button>
         <img id="lightbox-image" src="" alt="" />
+        <video id="lightbox-video" controls playsinline hidden></video>
       </div>
     </div>
 
@@ -2854,11 +2932,10 @@
       ==========================================================
     */
       const SITE_CONFIG = {
-        whatsappNumber: "", // Ex.: "5522999999999" (somente números, com DDI 55)
+        whatsappNumber: "22992474384",
         whatsappMessage:
           "Olá, conheci a EVB pelo site e quero informações sobre a próxima edição.",
         instagramUrl: "#", // Ex.: "https://instagram.com/evb"
-        email: "contato@evbimersao.com.br",
         checkoutUrl: "#", // Link do checkout ou formulário
         crmEndpoint: "", // Opcional: URL que receberá POST em JSON antes de abrir o WhatsApp
         privacyUrl: "#",
@@ -2867,7 +2944,7 @@
         event: {
           dateISO: "2026-07-26T09:00:00-03:00", // Ex.: "2026-08-22T09:00:00-03:00". Vazio = "Em breve"
           dateLabel: "26 de julho de 2026",
-          time: "das 9h às 16h",
+          time: "das 9 às 16h",
           city: "Cabo Frio - RJ",
           location: "A confirmar",
           spots: "Limitadas",
@@ -2993,12 +3070,14 @@
       }
 
       function isConfiguredWhatsApp() {
-        return sanitizePhone(SITE_CONFIG.whatsappNumber).length >= 12;
+        return sanitizePhone(SITE_CONFIG.whatsappNumber).length >= 10;
       }
 
       function buildWhatsAppUrl(message = SITE_CONFIG.whatsappMessage) {
         if (!isConfiguredWhatsApp()) return "#edicao";
-        return `https://wa.me/${sanitizePhone(SITE_CONFIG.whatsappNumber)}?text=${encodeURIComponent(message)}`;
+        const phone = sanitizePhone(SITE_CONFIG.whatsappNumber);
+        const internationalPhone = phone.startsWith("55") ? phone : `55${phone}`;
+        return `https://wa.me/${internationalPhone}?text=${encodeURIComponent(message)}`;
       }
 
       function applyConfig() {
@@ -3043,10 +3122,6 @@
             );
           });
         }
-
-        const email = $("#email-link");
-        email.textContent = SITE_CONFIG.email;
-        email.href = `mailto:${SITE_CONFIG.email}`;
 
         [
           [
@@ -3230,12 +3305,16 @@
       function setupLightbox() {
         const lightbox = $("#lightbox");
         const image = $("#lightbox-image");
+        const video = $("#lightbox-video");
         const close = $("#lightbox-close");
         let lastTrigger = null;
 
         const closeLightbox = () => {
           lightbox.classList.remove("open");
           image.src = "";
+          video.pause();
+          video.removeAttribute("src");
+          video.load();
           document.body.style.overflow = "";
           if (lastTrigger) lastTrigger.focus();
         };
@@ -3243,11 +3322,23 @@
         $$(".gallery-item").forEach((item) => {
           item.addEventListener("click", () => {
             lastTrigger = item;
-            image.src = item.dataset.full;
-            image.alt = $("img", item).alt;
+            const isVideo = item.dataset.type === "video";
+
+            image.hidden = isVideo;
+            video.hidden = !isVideo;
+
+            if (isVideo) {
+              video.src = item.dataset.full;
+            } else {
+              image.src = item.dataset.full;
+              image.alt = $("img", item).alt;
+            }
+
             lightbox.classList.add("open");
             document.body.style.overflow = "hidden";
             close.focus();
+
+            if (isVideo) video.play().catch(() => {});
           });
         });
 
@@ -3419,13 +3510,11 @@
 
       document.addEventListener("DOMContentLoaded", () => {
         renderTopics();
-        renderTestimonials();
         renderFaqs();
         applyConfig();
         setupHeaderAndMenu();
         setupFaq();
         setupLightbox();
-        setupCarousel();
         setupCountdown();
         setupForm();
         setupScrollSpy();

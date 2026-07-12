@@ -1441,6 +1441,7 @@
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 8px;
         margin: 25px 0;
+        contain: layout style;
       }
 
       .countdown__item {
@@ -1457,6 +1458,8 @@
         font-family: "Playfair Display", Georgia, serif;
         font-size: clamp(1.4rem, 6vw, 2.1rem);
         font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum" 1;
         line-height: 1;
       }
 
@@ -2350,10 +2353,9 @@
           <div class="mentor-wrap">
             <article class="mentor-card reveal">
               <div class="mentor-card__image">
-                <!-- Troque esta imagem pela foto oficial de Paulo Carvalho. -->
                 <img
-                  src="imgs/fotoDoPaulo2.PNG"
-                  alt="Mentor em reunião estratégica com profissionais"
+                  src="imgs/fotoDoPaulo3-mentor.jpeg"
+                  alt="Retrato profissional de Paulo Carvalho"
                   width="1000"
                   height="800"
                   loading="lazy"
@@ -2398,6 +2400,37 @@
                   profissionais da beleza a organizarem seus números, definirem
                   preços e custos com clareza e transformarem faturamento em
                   lucro, construindo negócios mais sólidos e previsíveis.
+                </p>
+              </div>
+            </article>
+
+            <article class="mentor-card reveal">
+              <div class="mentor-card__image">
+                <img
+                  src="imgs/fotoDaThayna.jpeg"
+                  alt="Retrato profissional de Thayná Barbosa"
+                  width="1000"
+                  height="800"
+                  loading="lazy"
+                />
+              </div>
+              <div class="mentor-card__body">
+                <span class="eyebrow" style="margin-bottom: 5px"
+                  >Mentora convidada</span
+                >
+                <h3>Thayná Barbosa</h3>
+                <span class="mentor-card__role"
+                  >Educação e posicionamento para profissionais da beleza</span
+                >
+                <p>
+                  Thayná Barbosa é empresária, palestrante e mentora de
+                  profissionais da área da beleza. Especialista em educação e
+                  posicionamento, dedica-se a capacitar profissionais que desejam
+                  transformar conhecimento em cursos de alto valor, construindo
+                  autoridade e expandindo seus negócios. Acredita que ensinar vai
+                  muito além de transmitir conteúdo: é gerar transformação, criar
+                  oportunidades e formar novos profissionais com propósito e
+                  excelência.
                 </p>
               </div>
             </article>
@@ -2567,9 +2600,16 @@
               class="gallery-item reveal"
               data-full="videos/bastidores/bastidores4.mp4"
               data-type="video"
+              data-poster="imgs/capas/capa1.jpeg"
               aria-label="Reproduzir vídeo dos bastidores da EVB"
             >
-              <video muted preload="metadata" playsinline aria-hidden="true">
+              <video
+                muted
+                preload="metadata"
+                playsinline
+                poster="imgs/capas/capa1.jpeg"
+                aria-hidden="true"
+              >
                 <source src="videos/bastidores/bastidores4.mp4" type="video/mp4" />
               </video>
               <span class="gallery-item__play" aria-hidden="true">
@@ -2583,9 +2623,16 @@
               class="gallery-item reveal"
               data-full="videos/bastidores/bastidores5.mp4"
               data-type="video"
+              data-poster="imgs/capas/capa2.jpeg"
               aria-label="Reproduzir vídeo dos bastidores da EVB"
             >
-              <video muted preload="metadata" playsinline aria-hidden="true">
+              <video
+                muted
+                preload="metadata"
+                playsinline
+                poster="imgs/capas/capa2.jpeg"
+                aria-hidden="true"
+              >
                 <source src="videos/bastidores/bastidores5.mp4" type="video/mp4" />
               </video>
               <span class="gallery-item__play" aria-hidden="true">
@@ -2599,9 +2646,16 @@
               class="gallery-item reveal"
               data-full="videos/bastidores/espaco1.mp4"
               data-type="video"
+              data-poster="imgs/capas/capa3.jpeg"
               aria-label="Reproduzir vídeo do espaço da EVB"
             >
-              <video muted preload="metadata" playsinline aria-hidden="true">
+              <video
+                muted
+                preload="metadata"
+                playsinline
+                poster="imgs/capas/capa3.jpeg"
+                aria-hidden="true"
+              >
                 <source src="videos/bastidores/espaco1.mp4" type="video/mp4" />
               </video>
               <span class="gallery-item__play" aria-hidden="true">
@@ -3314,6 +3368,7 @@
           image.src = "";
           video.pause();
           video.removeAttribute("src");
+          video.removeAttribute("poster");
           video.load();
           document.body.style.overflow = "";
           if (lastTrigger) lastTrigger.focus();
@@ -3328,6 +3383,7 @@
             video.hidden = !isVideo;
 
             if (isVideo) {
+              video.poster = item.dataset.poster || "";
               video.src = item.dataset.full;
             } else {
               image.src = item.dataset.full;
@@ -3398,38 +3454,49 @@
           seconds: $("#seconds"),
         };
 
+        const updateField = (field, value) => {
+          if (field.textContent !== value) field.textContent = value;
+        };
+
         const tick = () => {
           const distance = target - Date.now();
 
           if (distance <= 0) {
-            Object.values(fields).forEach(
-              (field) => (field.textContent = "00"),
-            );
+            Object.values(fields).forEach((field) => updateField(field, "00"));
             $("#event-status").textContent =
               "A edição está acontecendo ou já começou";
             return false;
           }
 
-          fields.days.textContent = String(
-            Math.floor(distance / 86400000),
-          ).padStart(2, "0");
-          fields.hours.textContent = String(
-            Math.floor((distance % 86400000) / 3600000),
-          ).padStart(2, "0");
-          fields.minutes.textContent = String(
-            Math.floor((distance % 3600000) / 60000),
-          ).padStart(2, "0");
-          fields.seconds.textContent = String(
-            Math.floor((distance % 60000) / 1000),
-          ).padStart(2, "0");
+          updateField(
+            fields.days,
+            String(Math.floor(distance / 86400000)).padStart(2, "0"),
+          );
+          updateField(
+            fields.hours,
+            String(Math.floor((distance % 86400000) / 3600000)).padStart(2, "0"),
+          );
+          updateField(
+            fields.minutes,
+            String(Math.floor((distance % 3600000) / 60000)).padStart(2, "0"),
+          );
+          updateField(
+            fields.seconds,
+            String(Math.floor((distance % 60000) / 1000)).padStart(2, "0"),
+          );
           return true;
         };
 
-        if (tick()) {
-          const timer = setInterval(() => {
-            if (!tick()) clearInterval(timer);
-          }, 1000);
-        }
+        const scheduleNextTick = () => {
+          const delay = 1000 - (Date.now() % 1000) + 10;
+          window.setTimeout(() => {
+            requestAnimationFrame(() => {
+              if (tick()) scheduleNextTick();
+            });
+          }, delay);
+        };
+
+        if (tick()) scheduleNextTick();
       }
 
       function getUtmParameters() {

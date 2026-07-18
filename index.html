@@ -1385,6 +1385,40 @@
         background: rgba(0, 0, 0, 0.17);
       }
 
+      .event-location {
+        grid-column: 1 / -1;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.055);
+        border-radius: var(--radius);
+        background: rgba(0, 0, 0, 0.17);
+      }
+
+      .event-location__details {
+        padding: 26px;
+      }
+
+      .event-location__details h3 {
+        margin: 0 0 8px;
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.45rem, 3vw, 2rem);
+        font-weight: 600;
+      }
+
+      .event-location__details address {
+        color: var(--muted);
+        font-size: 0.95rem;
+        font-style: normal;
+        line-height: 1.65;
+      }
+
+      .event-location__map {
+        display: block;
+        width: 100%;
+        height: clamp(300px, 42vw, 450px);
+        border: 0;
+        border-top: 1px solid rgba(212, 175, 55, 0.18);
+      }
+
       .event-badge {
         display: inline-flex;
         align-items: center;
@@ -2380,26 +2414,30 @@
             <article class="mentor-card reveal">
               <div class="mentor-card__image">
                 <img
-                  src="imgs/fotoDoRaphael.jpeg"
-                  alt="Retrato profissional de Raphael Pimentel Massini"
-                  width="1000"
-                  height="800"
+                  src="imgs/fotoDaRayane.jpeg"
+                  alt="Retrato profissional de Rayane Carvalho"
+                  width="3375"
+                  height="4219"
                   loading="lazy"
                 />
               </div>
               <div class="mentor-card__body">
                 <span class="eyebrow" style="margin-bottom: 5px"
-                  >Mentor convidado</span
+                  >Mentora convidada</span
                 >
-                <h3>Raphael Pimentel Massini</h3>
+                <h3>Rayane Carvalho</h3>
                 <span class="mentor-card__role"
-                  >Gestão e estratégia financeira para negócios da beleza</span
+                  >Excelência técnica, posicionamento e autoridade</span
                 >
                 <p>
-                  Consultor e estrategista financeiro, Raphael ajuda
-                  profissionais da beleza a organizarem seus números, definirem
-                  preços e custos com clareza e transformarem faturamento em
-                  lucro, construindo negócios mais sólidos e previsíveis.
+                  Rayane Carvalho é empresária, mentora e palestrante.
+                  Reconhecida como referência no mercado da beleza, une
+                  excelência técnica, premiações em competições e experiência
+                  prática para transformar profissionais em marcas fortes, com
+                  posicionamento, autoridade e crescimento sustentável. Sua
+                  missão é mostrar que dominar a técnica é apenas o começo; o
+                  verdadeiro diferencial está em construir um negócio sólido e
+                  uma carreira de destaque.
                 </p>
               </div>
             </article>
@@ -2860,6 +2898,25 @@
                 ></p>
               </form>
             </div>
+
+            <div class="event-location">
+              <div class="event-location__details">
+                <span class="eyebrow">Como chegar</span>
+                <h3>Local da imersão</h3>
+                <address>
+                  Rua Meira Júnior, 525 — Centro, Cabo Frio - RJ<br />
+                  Prédio de vidro
+                </address>
+              </div>
+              <iframe
+                class="event-location__map"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3747.6604995457014!2d-42.01902392469044!3d-22.88139917927291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjLCsDUyJzUzLjAiUyA0MsKwMDAnNTkuMiJX!5e1!3m2!1spt-BR!2sbr!4v1784414902867!5m2!1spt-BR!2sbr"
+                title="Mapa do local da Imersão EVB"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+            </div>
           </div>
         </div>
       </section>
@@ -2996,7 +3053,7 @@
       ==========================================================
     */
       const SITE_CONFIG = {
-        whatsappNumber: "22992474384",
+        whatsappUrl: "https://wa.me/message/UFHTMQFC7L6ML1",
         whatsappMessage:
           "Olá, conheci a EVB pelo site e quero informações sobre a próxima edição.",
         instagramUrl: "#", // Ex.: "https://instagram.com/evb"
@@ -3010,9 +3067,9 @@
           dateLabel: "26 de julho de 2026",
           time: "das 9 às 16h",
           city: "Cabo Frio - RJ",
-          location: "A confirmar",
+          location: "Rua Meira Júnior, 525 - Centro",
           spots: "Limitadas",
-          price: "R$ 597,00",
+          price: "Consulte",
           status: "Informações em atualização",
         },
       };
@@ -3134,14 +3191,12 @@
       }
 
       function isConfiguredWhatsApp() {
-        return sanitizePhone(SITE_CONFIG.whatsappNumber).length >= 10;
+        return Boolean(SITE_CONFIG.whatsappUrl);
       }
 
       function buildWhatsAppUrl(message = SITE_CONFIG.whatsappMessage) {
         if (!isConfiguredWhatsApp()) return "#edicao";
-        const phone = sanitizePhone(SITE_CONFIG.whatsappNumber);
-        const internationalPhone = phone.startsWith("55") ? phone : `55${phone}`;
-        return `https://wa.me/${internationalPhone}?text=${encodeURIComponent(message)}`;
+        return SITE_CONFIG.whatsappUrl;
       }
 
       function applyConfig() {
@@ -3572,7 +3627,7 @@
 
           if (!isConfiguredWhatsApp()) {
             status.textContent =
-              "Configure o número do WhatsApp no bloco SITE_CONFIG para ativar o envio.";
+              "Configure o link do WhatsApp no bloco SITE_CONFIG para ativar o envio.";
             return;
           }
 

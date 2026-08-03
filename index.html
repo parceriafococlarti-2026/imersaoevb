@@ -888,14 +888,13 @@
       }
 
       .mentor-card__image {
-        min-height: 360px;
+        aspect-ratio: 4 / 5;
         overflow: hidden;
       }
 
       .mentor-card__image img {
         width: 100%;
         height: 100%;
-        min-height: 360px;
         object-fit: cover;
         filter: grayscale(0.25) sepia(0.15);
         transition: var(--transition);
@@ -1108,7 +1107,6 @@
       .gallery-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: 180px;
         gap: 10px;
         margin-top: 38px;
       }
@@ -1123,14 +1121,7 @@
         color: var(--cream);
         background: var(--black-3);
         text-align: left;
-      }
-
-      .gallery-item:first-child {
-        grid-column: 1 / -1;
-      }
-
-      .gallery-item:nth-child(2) img {
-        object-position: center top;
+        aspect-ratio: 2 / 3;
       }
 
       .gallery-item::after {
@@ -1648,7 +1639,7 @@
             transparent 44%
           ),
           linear-gradient(rgba(8, 8, 8, 0.78), rgba(8, 8, 8, 0.94)),
-          url("imgs/bastidores/bastidores3.png") center / cover no-repeat;
+          url("imgs/tablet.png") center / cover no-repeat;
       }
 
       .final-cta .section-title {
@@ -1887,9 +1878,6 @@
         .topics-grid {
           grid-template-columns: repeat(3, minmax(0, 1fr));
         }
-        .gallery-grid {
-          grid-auto-rows: 230px;
-        }
         .event-data {
           grid-template-columns: repeat(3, minmax(0, 1fr));
         }
@@ -1921,15 +1909,20 @@
           top: 105px;
         }
 
+        .mentor-wrap {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          align-items: stretch;
+        }
+
         .mentor-card {
-          grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+          grid-template-columns: 1fr;
         }
 
         .mentor-card__body {
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          padding: 48px;
+          justify-content: flex-start;
+          padding: 32px;
         }
 
         .topics-grid {
@@ -1995,6 +1988,10 @@
           display: flex;
         }
 
+        .mentor-wrap {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
         .topics-grid {
           grid-template-columns: repeat(6, minmax(0, 1fr));
         }
@@ -2047,12 +2044,7 @@
         }
 
         .gallery-grid {
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          grid-auto-rows: 235px;
-        }
-
-        .gallery-item:first-child {
-          grid-column: span 2;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
         }
 
         .feedback-videos {
@@ -2169,7 +2161,7 @@
         <div class="container">
           <div class="hero__content">
             <p class="hero__kicker reveal">
-              Imersão presencial para o mercado da beleza
+              3ª edição · 30 de agosto de 2026 · Cabo Frio
             </p>
             <h1 id="hero-title" class="reveal reveal-delay-1">
               Você domina sua profissão.
@@ -2388,36 +2380,10 @@
             <article class="mentor-card reveal">
               <div class="mentor-card__image">
                 <img
-                  src="imgs/fotoDoPaulo3-mentor.jpeg"
-                  alt="Retrato profissional de Paulo Carvalho"
-                  width="1000"
-                  height="800"
-                  loading="lazy"
-                />
-              </div>
-              <div class="mentor-card__body">
-                <span class="eyebrow" style="margin-bottom: 5px"
-                  >Mentor principal</span
-                >
-                <h3>Paulo Carvalho</h3>
-                <span class="mentor-card__role"
-                  >Gestão e Venda Estruturada para o mercado da beleza</span
-                >
-                <p>
-                  Fundador da EVB, especialista em transformar profissionais da
-                  beleza em empresárias através de gestão, vendas e
-                  posicionamento estratégico.
-                </p>
-              </div>
-            </article>
-
-            <article class="mentor-card reveal">
-              <div class="mentor-card__image">
-                <img
-                  src="imgs/fotoDaRayane.jpeg"
-                  alt="Retrato profissional de Rayane Carvalho"
-                  width="3375"
-                  height="4219"
+                  src="imgs/mentoresAgosto/fotoPaulaEloy.png"
+                  alt="Mentora Paula Eloy na 3ª edição da Imersão EVB"
+                  width="1024"
+                  height="1280"
                   loading="lazy"
                 />
               </div>
@@ -2425,19 +2391,20 @@
                 <span class="eyebrow" style="margin-bottom: 5px"
                   >Mentora convidada</span
                 >
-                <h3>Rayane Carvalho</h3>
+                <h3>Paula Eloy</h3>
                 <span class="mentor-card__role"
-                  >Excelência técnica, posicionamento e autoridade</span
+                  >Técnica, posicionamento, vendas e gestão</span
                 >
                 <p>
-                  Rayane Carvalho é empresária, mentora e palestrante.
-                  Reconhecida como referência no mercado da beleza, une
-                  excelência técnica, premiações em competições e experiência
-                  prática para transformar profissionais em marcas fortes, com
-                  posicionamento, autoridade e crescimento sustentável. Sua
-                  missão é mostrar que dominar a técnica é apenas o começo; o
-                  verdadeiro diferencial está em construir um negócio sólido e
-                  uma carreira de destaque.
+                  Paula Eloy é nail designer, empresária e mentora de
+                  profissionais da beleza. Sua metodologia une precisão técnica,
+                  naturalidade, posicionamento, vendas e gestão para formar
+                  profissionais que entregam experiências de alto padrão e
+                  constroem marcas fortes, lucrativas e reconhecidas. Acredita
+                  que conhecimento e mudança de mentalidade podem devolver
+                  autoestima, liberdade financeira e novas perspectivas de
+                  futuro, preparando mulheres para viver da profissão com
+                  propósito, autoridade e excelência.
                 </p>
               </div>
             </article>
@@ -2445,10 +2412,10 @@
             <article class="mentor-card reveal">
               <div class="mentor-card__image">
                 <img
-                  src="imgs/fotoDaThayna.jpeg"
-                  alt="Retrato profissional de Thayná Barbosa"
-                  width="1000"
-                  height="800"
+                  src="imgs/mentoresAgosto/fotoJessicaSilva.png"
+                  alt="Mentora Jéssica Silva na 3ª edição da Imersão EVB"
+                  width="1024"
+                  height="1280"
                   loading="lazy"
                 />
               </div>
@@ -2456,19 +2423,52 @@
                 <span class="eyebrow" style="margin-bottom: 5px"
                   >Mentora convidada</span
                 >
-                <h3>Thayná Barbosa</h3>
+                <h3>Jéssica Silva</h3>
                 <span class="mentor-card__role"
-                  >Educação e posicionamento para profissionais da beleza</span
+                  >Equipes, cultura e crescimento sustentável</span
                 >
                 <p>
-                  Thayná Barbosa é empresária, palestrante e mentora de
-                  profissionais da área da beleza. Especialista em educação e
-                  posicionamento, dedica-se a capacitar profissionais que desejam
-                  transformar conhecimento em cursos de alto valor, construindo
-                  autoridade e expandindo seus negócios. Acredita que ensinar vai
-                  muito além de transmitir conteúdo: é gerar transformação, criar
-                  oportunidades e formar novos profissionais com propósito e
-                  excelência.
+                  Jéssica Silva é empresária, lash designer, educadora e mentora.
+                  À frente do Studio Jéssica Silva, em Belford Roxo (RJ),
+                  transformou sua paixão pela beleza em um negócio de sucesso e
+                  tornou-se referência regional em extensão de cílios. Sua
+                  trajetória é marcada por superação, independência financeira e
+                  formação de novas profissionais. Na imersão, compartilhará
+                  experiências sobre crescimento, construção de equipes,
+                  desenvolvimento de pessoas e cultura organizacional para
+                  negócios mais sólidos e sustentáveis.
+                </p>
+              </div>
+            </article>
+
+            <article class="mentor-card reveal">
+              <div class="mentor-card__image">
+                <img
+                  src="imgs/mentoresAgosto/fotoBrunaGil.png"
+                  alt="Mentora Bruna Gil na 3ª edição da Imersão EVB"
+                  width="1024"
+                  height="1280"
+                  loading="lazy"
+                />
+              </div>
+              <div class="mentor-card__body">
+                <span class="eyebrow" style="margin-bottom: 5px"
+                  >Mentora convidada</span
+                >
+                <h3>Bruna Gil</h3>
+                <span class="mentor-card__role"
+                  >Empreendedorismo, excelência e atendimento humanizado</span
+                >
+                <p>
+                  Bruna Gil é empresária e mentora, fundadora do Studio &amp;
+                  Academy Bruna Gil. Especialista em extensão de cílios e design
+                  de sobrancelhas, destaca-se por trabalhos de naturalidade e
+                  sofisticação e por técnicas como Fox Eyes, Sirena e Brow
+                  Lamination. Com mais de 30 certificações nacionais e
+                  internacionais, dedica-se à formação de profissionais e leva
+                  aos palcos uma mensagem de superação, empreendedorismo,
+                  atendimento humanizado e excelência, inspirando mulheres a
+                  conquistar independência financeira, autoestima e propósito.
                 </p>
               </div>
             </article>
@@ -2588,67 +2588,84 @@
           <span class="eyebrow reveal">Experiência em movimento</span>
           <h2 class="section-title reveal">Bastidores da <em>EVB</em></h2>
           <p class="lead reveal">
-            Alguns registros de quem já viveu essa experiência.
+            Registros de quem viveu a segunda edição dessa experiência.
           </p>
 
           <div class="gallery-grid">
             <button
               class="gallery-item reveal"
-              data-full="imgs/bastidores/bastidores1.png"
-              aria-label="Ampliar foto dos bastidores da EVB"
+              data-full="videos/bastidores/bastidoresSegundaEdicao/image.png"
+              aria-label="Ampliar foto dos bastidores da segunda edição da EVB"
             >
               <img
-                src="imgs/bastidores/bastidores1.png"
-                alt="Bastidores da imersão EVB"
-                width="1000"
-                height="900"
+                src="videos/bastidores/bastidoresSegundaEdicao/image.png"
+                alt="Paulo Carvalho conduzindo conteúdo na segunda edição da EVB"
+                width="854"
+                height="1280"
                 loading="lazy"
               />
             </button>
 
             <button
               class="gallery-item reveal"
-              data-full="imgs/bastidores/bastidores2.png"
-              aria-label="Ampliar foto dos bastidores da EVB"
+              data-full="videos/bastidores/bastidoresSegundaEdicao/image copy.png"
+              aria-label="Ampliar foto dos bastidores da segunda edição da EVB"
             >
               <img
-                src="imgs/bastidores/bastidores2.png"
-                alt="Participantes durante a imersão EVB"
-                width="800"
-                height="600"
+                src="videos/bastidores/bastidoresSegundaEdicao/image copy.png"
+                alt="Apresentação durante a segunda edição da EVB"
+                width="854"
+                height="1280"
                 loading="lazy"
               />
             </button>
 
             <button
               class="gallery-item reveal"
-              data-full="imgs/bastidores/bastidores3.png"
-              aria-label="Ampliar foto dos bastidores da EVB"
+              data-full="videos/bastidores/bastidoresSegundaEdicao/image copy 2.png"
+              aria-label="Ampliar foto dos bastidores da segunda edição da EVB"
             >
               <img
-                src="imgs/bastidores/bastidores3.png"
-                alt="Registro de uma edição da imersão EVB"
-                width="800"
-                height="600"
+                src="videos/bastidores/bastidoresSegundaEdicao/image copy 2.png"
+                alt="Participante acompanhando o conteúdo da segunda edição da EVB"
+                width="854"
+                height="1280"
                 loading="lazy"
               />
             </button>
 
             <button
               class="gallery-item reveal"
-              data-full="videos/bastidores/bastidores4.mp4"
+              data-full="videos/bastidores/bastidoresSegundaEdicao/image copy 3.png"
+              aria-label="Ampliar foto dos bastidores da segunda edição da EVB"
+            >
+              <img
+                src="videos/bastidores/bastidoresSegundaEdicao/image copy 3.png"
+                alt="Participante durante a segunda edição da EVB"
+                width="854"
+                height="1280"
+                loading="lazy"
+              />
+            </button>
+
+            <button
+              class="gallery-item reveal"
+              data-full="videos/bastidores/bastidoresSegundaEdicao/WhatsApp Video 2026-08-03 at 12.23.14.mp4"
               data-type="video"
-              data-poster="imgs/capas/capa1.jpeg"
-              aria-label="Reproduzir vídeo dos bastidores da EVB"
+              data-poster="imgs/capas/capaCaneta.png"
+              aria-label="Reproduzir vídeo dos bastidores da segunda edição da EVB"
             >
               <video
                 muted
                 preload="metadata"
                 playsinline
-                poster="imgs/capas/capa1.jpeg"
+                poster="imgs/capas/capaCaneta.png"
                 aria-hidden="true"
               >
-                <source src="videos/bastidores/bastidores4.mp4" type="video/mp4" />
+                <source
+                  src="videos/bastidores/bastidoresSegundaEdicao/WhatsApp Video 2026-08-03 at 12.23.14.mp4"
+                  type="video/mp4"
+                />
               </video>
               <span class="gallery-item__play" aria-hidden="true">
                 <svg class="icon" viewBox="0 0 24 24">
@@ -2659,42 +2676,22 @@
 
             <button
               class="gallery-item reveal"
-              data-full="videos/bastidores/bastidores5.mp4"
+              data-full="videos/bastidores/bastidoresSegundaEdicao/WhatsApp Video 2026-08-03 at 12.24.32.mp4"
               data-type="video"
-              data-poster="imgs/capas/capa2.jpeg"
-              aria-label="Reproduzir vídeo dos bastidores da EVB"
+              data-poster="imgs/capas/capaPaulo.png"
+              aria-label="Reproduzir vídeo dos bastidores da segunda edição da EVB"
             >
               <video
                 muted
                 preload="metadata"
                 playsinline
-                poster="imgs/capas/capa2.jpeg"
+                poster="imgs/capas/capaPaulo.png"
                 aria-hidden="true"
               >
-                <source src="videos/bastidores/bastidores5.mp4" type="video/mp4" />
-              </video>
-              <span class="gallery-item__play" aria-hidden="true">
-                <svg class="icon" viewBox="0 0 24 24">
-                  <path d="m8 5 11 7-11 7V5Z" />
-                </svg>
-              </span>
-            </button>
-
-            <button
-              class="gallery-item reveal"
-              data-full="videos/bastidores/espaco1.mp4"
-              data-type="video"
-              data-poster="imgs/capas/capa3.jpeg"
-              aria-label="Reproduzir vídeo do espaço da EVB"
-            >
-              <video
-                muted
-                preload="metadata"
-                playsinline
-                poster="imgs/capas/capa3.jpeg"
-                aria-hidden="true"
-              >
-                <source src="videos/bastidores/espaco1.mp4" type="video/mp4" />
+                <source
+                  src="videos/bastidores/bastidoresSegundaEdicao/WhatsApp Video 2026-08-03 at 12.24.32.mp4"
+                  type="video/mp4"
+                />
               </video>
               <span class="gallery-item__play" aria-hidden="true">
                 <svg class="icon" viewBox="0 0 24 24">
@@ -2744,10 +2741,10 @@
       <section class="section section--alt" id="edicao">
         <div class="container">
           <span class="eyebrow reveal">Reserve seu lugar</span>
-          <h2 class="section-title reveal">Próxima <em>edição</em></h2>
+          <h2 class="section-title reveal">3ª <em>edição</em></h2>
           <p class="lead reveal">
-            As informações abaixo são controladas em um único bloco de
-            configuração no final deste arquivo.
+            Um dia de imersão presencial para fortalecer a gestão, as vendas e o
+            posicionamento do seu negócio de beleza.
           </p>
 
           <div class="event-shell reveal">
@@ -3055,7 +3052,7 @@
       const SITE_CONFIG = {
         whatsappUrl: "https://wa.me/message/UFHTMQFC7L6ML1",
         whatsappMessage:
-          "Olá, conheci a EVB pelo site e quero informações sobre a próxima edição.",
+          "Olá, conheci a EVB pelo site e quero informações sobre a 3ª edição, no dia 30 de agosto de 2026.",
         instagramUrl: "#", // Ex.: "https://instagram.com/evb"
         checkoutUrl: "#", // Link do checkout ou formulário
         crmEndpoint: "", // Opcional: URL que receberá POST em JSON antes de abrir o WhatsApp
@@ -3063,14 +3060,14 @@
         termsUrl: "#",
 
         event: {
-          dateISO: "2026-07-26T09:00:00-03:00", // Ex.: "2026-08-22T09:00:00-03:00". Vazio = "Em breve"
-          dateLabel: "26 de julho de 2026",
-          time: "das 9 às 16h",
+          dateISO: "2026-08-30T09:30:00-03:00", // Vazio = "Em breve"
+          dateLabel: "30 de agosto de 2026",
+          time: "das 9h30 às 16h",
           city: "Cabo Frio - RJ",
           location: "Rua Meira Júnior, 525 - Centro",
           spots: "Limitadas",
           price: "Consulte",
-          status: "Informações em atualização",
+          status: "3ª edição",
         },
       };
 
